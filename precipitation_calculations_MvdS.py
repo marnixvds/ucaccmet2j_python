@@ -1,33 +1,24 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Jan  8 12:38:03 2018
-
-@author: Marnix van de Sande
-"""
-
 import json
 
 #Load JSON file into a list of dictionaries
 with open('precipitation.json') as file:
     precipitation_data = json.load(file)
 
-#Make a dictionary out of the stations CSV file
+#Make a dictionary with stations from CSV file
 with open('stations.csv') as file:
     stations = {}
     headers = file.readline()
     for line in file:
         (Location, State, Station) = line.strip().split(',')
-        stations[Location] = {
-                'State' : State,
-                'Station' : Station
-                }
+        stations[Location] = {'State' : State, 'Station' : Station}
 
 #Calculate the yearly precipitation in the entire country --> For % state. I now used a loop, but is there a way to sum() this?
 total_country_precipitation = 0
 for item in range(len(precipitation_data)):
     total_country_precipitation += precipitation_data[item]['value']
     
-result_dictionary = {}
+result_dictionary = {} #Create a dict for final results
 for chosen_station in stations.keys():
     #Define weather station code of interest and create an empty list for the filtered data
     state = stations[chosen_station]['State']
@@ -58,7 +49,7 @@ for chosen_station in stations.keys():
     #Calculate the relative precipitation of this state
     relative_state_precipitation = (precipitation_whole_year/total_country_precipitation)*100
     
-    #Put all the results together into one dictionary
+    #Add all the results the final dictionary
     result_dictionary[chosen_station] = {
             'station': station_code,
             'state': state,
