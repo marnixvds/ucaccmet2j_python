@@ -29,5 +29,21 @@ for month in range(1, 13): #Loop over the 12 months, sum up all values for that 
             tmp_data.append(seattle_data[measurement]['value']) #Add all the values for this month to a temporary list
     precipitation_per_month.append(sum(tmp_data)) #Add the sum of this temporary list (all the measurements for one month) to the final data.
 
+#Calculate sum of prep for the whole year
+precipitation_whole_year = sum(precipitation_per_month)
+#Calculate relative precipitation (% compared to whole year)
+relative_precipitation =[]
+for month in range(0, 12):
+    relative_precipitation.append((precipitation_per_month[month]/precipitation_whole_year)*100)
+
+#Put all the results together into one dictionary
+result_dictionary = {
+        'Seattle':{
+                'TotalMonthlyPrecipitation': precipitation_per_month,
+                'relativeMonthlyPrecipitation': relative_precipitation,
+                'totalYearlyPrecipitation': precipitation_whole_year                
+                }
+        }
+
 with open('seattle_data.json', 'w') as file: #Export the final data to a JSON file
-    json.dump(precipitation_per_month, file, indent=4)
+    json.dump(result_dictionary, file, indent=4)
