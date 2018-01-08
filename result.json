@@ -31,7 +31,7 @@
             4.82780817508851
         ],
         "totalYearlyPrecipitation": 9321,
-        "relativeYearlyPrecipitation": 29.68660424230843
+        "relativeYearlyPrecipitation": 100.0
     },
     "Seattle": {
         "station": "GHCND:US1WAKG0038",
@@ -65,7 +65,7 @@
             21.073345259391772
         ],
         "totalYearlyPrecipitation": 11180,
-        "relativeYearlyPrecipitation": 35.607363526339256
+        "relativeYearlyPrecipitation": 54.533925174381736
     },
     "Maui": {
         "station": "GHCND:USC00513317",
@@ -99,7 +99,7 @@
             16.250487709715177
         ],
         "totalYearlyPrecipitation": 5126,
-        "relativeYearlyPrecipitation": 16.325880629339448
+        "relativeYearlyPrecipitation": 20.002341280680533
     },
     "San Diego": {
         "station": "GHCND:US1CASD0032",
